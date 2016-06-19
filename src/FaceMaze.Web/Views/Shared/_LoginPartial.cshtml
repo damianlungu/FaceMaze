@@ -1,0 +1,40 @@
+﻿@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    var user = (await UserManager.GetUserAsync(User));
+    if (user != null)
+    {
+        <ul class="nav navbar-nav">
+            <li><a asp-controller="Home" asp-action="GetHighScores">HighScores</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <div class="profile-image dropdown-toggle" role="button" data-toggle="dropdown">
+                    <a><img src="@user.ProfileImage" alt="@user.Name" class="image-wrap navbar-pic" onerror="defaultImage(this);"/></a>
+                </div>
+                <ul class="dropdown-menu">
+                    <li><a asp-controller="Manage" asp-action="Index" title="Manage">Manage</a></li>
+                    <li><a asp-controller="Home" asp-action="GetHighScore" title="HighScore">HighScore</a></li>
+                    <li><a asp-controller="Home" asp-action="GetFriends" title="Friends">Friends</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a asp-controller="Account" asp-action="LogOff">Log off</a></li>
+                </ul>
+            </li>
+        </ul>
+    }
+    else
+    {
+        @SignInManager.SignOutAsync();
+        <ul class="nav navbar-nav navbar-right">
+            <li><a asp-controller="Account" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li><a asp-controller="Account" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
+    </ul>
+}

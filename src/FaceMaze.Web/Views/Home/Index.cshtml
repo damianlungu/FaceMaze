@@ -1,0 +1,100 @@
+﻿@model KeyValuePair<User, List<User>>
+@{
+    ViewData["Title"] = "FaceMaze";
+    var user = Model.Key;
+    var friends = Model.Value;
+}
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="container">
+        <div class="main">
+            <noscript>
+                <h2>Enable Javascript!</h2>
+                <p>This HTML 5 app requires Javascript to run. Please check that Javascript is enabled in your browser.</p>
+            </noscript>
+
+            <!-- Highscore -->
+            <div class="content" id="highscore-content">
+                <div class="menu-button" id="back">&lt; Back</div>
+                <div>
+                    <h1><a asp-controller="Home" asp-action="GetHighScore" title="HighScore">HighScore</a></h1>
+                    <p>
+                        <ol id="highscore-list"></ol>
+                    </p>
+                </div>
+            </div>
+            <!-- Game -->
+            <div class="content" id="game-content">
+                <div class="game wrapper">
+                    <div class="score">Score:</div>
+                    <div class="level">Lvl:</div>
+                    <div class="lives">Lives:</div>
+                    <div class="controlSound">
+                        <img src="~/images/game/audio-icon-mute.png" id="mute">
+                    </div>
+                    <div id="canvas-container">
+                        <div id="canvas-overlay-container">
+                            <div id="canvas-overlay-content">
+                                <div id="title">FaceMaze</div>
+                                <div id="text">Click to play</div>
+                            </div>
+                        </div>
+                        <canvas id="gameCanvas" width="540" height="390">
+                            Canvas not supported
+                        </canvas>
+                    </div>
+                    <!-- Controls-->
+                    <div class="controls" id="game-buttons">
+                        <div>
+                            <span id="up" class="controlButton">&uarr;</span>
+                        </div>
+                        <div>
+                            <span id="left" class="controlButton">&larr;</span>
+                            <span id="down" class="controlButton">&darr;</span>
+                            <span id="right" class="controlButton">&rarr;</span>
+                        </div>
+                    </div>
+                    <div class="controls" id="menu-buttons">
+                        <ul>
+                            <li class="menu-button" id="newGame">New Game</li>
+                            <li class="menu-button" id="highScore">Highscore</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="description nomobile">
+                    <span id="audio">
+                        <audio id="intro" preload="auto">
+                            <source src="/sounds/intro.wav" type="audio/wav">
+                        </audio>
+                        <audio id="chomp" preload="auto">
+                            <source src="/sounds/chomp.wav" type="audio/wav">
+                        </audio>
+                        <audio id="death" preload="auto">
+                            <source src="/sounds/death.wav" type="audio/wav">
+                        </audio>
+                        <audio id="eatfruit" preload="auto">
+                            <source src="/sounds/eatfruit.wav" type="audio/wav">
+                        </audio>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container">
+        <div class="main">
+            <div class="content">
+                <h1>FACE MAZE</h1>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_GameScripts"); }
+}

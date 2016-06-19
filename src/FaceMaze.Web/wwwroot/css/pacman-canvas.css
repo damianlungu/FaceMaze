@@ -1,0 +1,245 @@
+.main {
+    width: 100%;
+    max-width: 660px;
+    margin: 10px auto;
+    position: static;
+    left: auto;
+}
+
+* {
+     box-shadow: none !important;
+}
+
+.content[id*=-content]:not(#game-content) {	
+	display: none; 
+	overflow-y: auto; 
+	overflow-x: hidden;
+}
+
+.pull-right {
+	float: right;
+}
+
+#gameCanvas {
+    border: none;
+    display: block;
+    background: black;
+    width: 100%;
+    height: auto;
+}
+
+#canvas-container {
+     position: relative;
+}
+
+#canvas-overlay-container {
+    position: absolute;
+    background: #535353;
+    background: rgba(100, 100, 100, 0.3);
+    height: 100%;
+    width: 540px;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#canvas-overlay-content {
+    text-align: center;
+    text-transform: uppercase;
+    color: rgb(83, 83, 83);
+    cursor: pointer;
+}
+
+#canvas-overlay-content #title {
+	font-size: 200%;
+    color: #03fbc2;
+}
+
+#game-buttons {
+    display: none;
+}
+
+#menu-buttons ul {
+    display: block;
+    list-style: none;
+    padding: 0;
+}
+
+.menu-button {
+    cursor: pointer;
+    background-color: #f44336;
+    border: none;
+    color: white;
+    border: 2px solid #f44336;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.menu-button:hover {
+    background-color: white;
+    color: #f44336;
+    transition: 1s;
+}
+
+#mute {
+    display: none;
+    width: 36px;
+    height: 25px;
+}
+
+#score {
+     float: right;
+}
+
+.canvas {
+    position: absolute;
+    padding-top: 20px;
+}
+
+.content {
+    width: 100%;
+    max-width: 540px;
+    text-align: left;
+    margin: 0;
+}
+
+.wrapper {
+    padding: 0;
+}
+
+.game {
+    max-width: 540px;
+    margin: auto;
+}
+
+audio {
+    display: block;
+}
+
+.score {
+    width: 180px;
+}
+
+.score, .lives, .level {
+    display: inline-block;
+}
+
+.controls {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.controls-section { 
+	height: auto; 
+	width: 47%; 
+	display: inline-block; 
+	margin: 0;
+	text-align: left;
+	}
+
+.controls-right .controlButton {
+    position: relative;
+    right: -65%;
+}
+
+.controlSound {
+    background: url('../images/game/audio-icon.png');
+    width: 73px;
+    height: 50px;
+    position: relative;
+    bottom: 5px;
+    background-size: 100%;
+    height: 25px;
+    width: 36px;
+    float: right;
+}
+
+.controlButton {
+	display: inline-block;
+	width: 90px;
+	height: 90px;
+	margin: 5px;
+	background: none repeat scroll 0 0 rgb(50, 100, 255);
+	line-height: 70px;
+	border-radius: 80%;
+	font-weight: bold;
+	font-size: 60px;
+	cursor: pointer;
+}
+
+    .controlButton:hover, .controlButton:active {
+        background: #4603fb;
+    }
+
+.description {
+    display: none;
+}
+
+@media screen and (max-width: 1050px) {
+    html, body {
+        background: rgb(0,0,0);
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .game {
+        width: 93%;
+    }
+
+    .content {
+        max-width: none;
+    }
+
+    #menu-buttons .button {
+        background: #ffffff;
+        background: rgba(255,255,255,0.1);
+    }
+
+    .button:hover {
+        background: #ffffff;
+        background: rgba(255,255,255,0.3);
+    }
+
+    .button#back {
+        top: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+    .nomobile {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    html, body {
+        overflow-x: hidden;
+        height: 100%;
+    }
+
+    .main {
+        margin: 10px auto;
+    }
+
+    .content {
+        min-height: 0;
+    }
+
+    .controlButton {
+        width: 60px;
+        height: 60px;
+        line-height: 40px;
+        font-size: 40px;
+    }
+
+    .controls-right .controlButton {
+        right: -55%;
+    }
+}

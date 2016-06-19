@@ -1,0 +1,72 @@
+﻿@font-face {
+  font-family: 'PressStart';
+  font-style: normal;
+  src: url('../fonts/PressStart2P.ttf');
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: lightsteelblue;
+    font-family: 'PressStart';
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+input, select, textarea {
+    max-width: 280px;
+}
+
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.btn-bracketed::before {
+    display: inline-block;
+    content: "[";
+    padding-right: 0.5em;
+}
+
+.btn-bracketed::after {
+    display: inline-block;
+    content: "]";
+    padding-left: 0.5em;
+}
+
+.profile-image .navbar-pic{
+    height: 50px;
+}
+
+.profile-image .image-wrap {
+	position: relative;
+	transition: 500ms;
+	border-radius: 15px;
+}
+
+.profile-image .image-wrap:hover {
+	border-radius: 50em;
+}
+
+.profile-image .image-wrap:after {
+	position: absolute;
+	content: ' ';
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	transition: 100ms;
+	border-radius: 30em;
+}
+
+.profile-image .image-wrap:hover:after  {
+    background: radial-gradeathnt(50% 50%, rgba(0, 0, 0, 0) 40px, rgba(0, 0, 0, 1) 80px);
+}
